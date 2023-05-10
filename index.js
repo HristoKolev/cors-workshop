@@ -64,25 +64,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', req.header('Origin'));
-  res.header('Access-Control-Allow-Credentials', 'true');
-
-  if (req.method === 'OPTIONS') {
-    res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE');
-
-    res.header(
-      'Access-Control-Allow-Headers',
-      req.headers['access-control-request-headers']
-    );
-
-    res.status(204);
-    res.end();
-  } else {
-    next();
-  }
-});
-
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
